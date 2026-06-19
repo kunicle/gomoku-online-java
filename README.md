@@ -220,6 +220,22 @@ HTTPによる言語間通信により、JavaクライアントからPython AIエ
 
 ---
 
+## 開発中の試行錯誤 / Development Challenges
+
+**1. パスワードのセキュリティ対策**
+当初はパスワードを平文でDBに保存していたが、
+セキュリティ上の問題を認識し、SHA-256ハッシュ化を導入した。
+`PasswordUtil` クラスに処理を集約することで、
+将来的なアルゴリズム変更にも対応しやすい構造にした。
+
+**2. AIロジックの分離設計**
+当初はAIロジックをJava内に直接実装することを検討したが、
+PythonのML/AIライブラリの活用を見据え、
+Flask REST APIとして分離する設計を採用した。
+これにより、AIモデルの差し替えが容易な拡張性を確保した。
+
+---
+
 ## 未実装事項 / Known Limitations
 
 - 三三・四四の禁手ルール / Forbidden moves (double-three, double-four)
